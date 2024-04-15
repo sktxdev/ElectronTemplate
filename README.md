@@ -27,6 +27,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help (i.e., diy mode)
 
 ``` bash
+# mac only
+npm install @esbuild/darwin-arm64
+npm install @rollup/rollup-darwin-arm64
+
 ng new my_angular_app
 cd my_angular_app
 # add app.js
