@@ -13,7 +13,7 @@ function createWindow() {
     mainWindow.loadFile("dist/electron-template/browser/index.html");
 
     // Open the DevTools (optional)
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
 
     mainWindow.on('closed', function() {
         mainWindow = null;

@@ -45,3 +45,10 @@ npm install -g electron-packager
 
 ``` javascript
 ```
+
+### Versions
+ % node --version
+v20.9.0
+ % npm --version
+10.1.0
+
