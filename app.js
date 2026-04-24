@@ -1,13 +1,29 @@
 
 // don't convert to ES module like vscode wants to, it could mess you up
-const { app, BrowserWindow, globalShortcut } = require('electron');
+const { app, BrowserWindow, globalShortcut, session } = require('electron');
 
 let mainWindow
 
 function createWindow() {
     mainWindow = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        webPreferences: {
+            nodeIntegration: false,
+            contextIsolation: true,
+            enableRemoteModule: false,
+            webSecurity: true
+        }
+    });
+
+    // Set Content Security Policy headers
+    session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+        callback({
+            responseHeaders: {
+                ...details.responseHeaders,
+                'Content-Security-Policy': ['default-src \'self\'; script-src \'self\'; style-src \'self\' \'unsafe-inline\'; img-src \'self\' data:; font-src \'self\';']
+            }
+        });
     });
 
     mainWindow.loadFile("dist/electron-template/browser/index.html");
