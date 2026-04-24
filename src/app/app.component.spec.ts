@@ -8,6 +8,11 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
+  // This is to get around the "Some of your tests did a full page reload!" issue
+  beforeAll(() => {
+    window.onbeforeunload = () => 'Oh no!';
+  });
+
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
